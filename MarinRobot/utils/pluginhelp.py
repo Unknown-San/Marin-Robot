@@ -38,7 +38,7 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Chat, Message, User
 
-from MarinRobot import OWNER_ID, SUPPORT_CHAT, pgram
+from MarinRobot import OWNER_ID, SUPPORT_CHAT, pbot
 from MarinRobot.utils.errors import split_limits
 
 
