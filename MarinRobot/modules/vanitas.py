@@ -2,7 +2,7 @@
 # Copyright Vanitas System
 # Join @vanitas_support
 
-import logging
+"""import logging
 import os
 import json
 import re
@@ -258,3 +258,4 @@ dispatcher.add_handler(ABOUT_HANDLER)
 dispatcher.add_handler(BLUEMOON_HANDLER)
 dispatcher.add_handler(RM_VAINITAS_HANDLER)
 dispatcher.add_handler(BLUEMOON_HANDLERK, group=102)
+"""
