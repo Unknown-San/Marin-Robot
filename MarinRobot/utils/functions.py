@@ -33,7 +33,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from pyrogram.types import Message
 
 from MarinRobot import aiohttpsession as aiosession
-from MarinRobot.ex_plugins.dbfunctions import start_restart_stage
+from MarinRobot.utils.dbfunctions import start_restart_stage
 from MarinRobot.utils.http import get, post
 
 
