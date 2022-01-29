@@ -3,7 +3,7 @@ import sys
 from motor import motor_asyncio
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
-from MarinRobot import MONGO_DB_URI
+
 
 
 MONGO_PORT = "27017"
