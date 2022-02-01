@@ -2,7 +2,7 @@
 # Copyright Vanitas System
 # Join @vanitas_support
 
-"""import logging
+import logging
 import os
 import json
 import re
@@ -22,7 +22,9 @@ from telegram import (CallbackQuery, Chat, MessageEntity, InlineKeyboardButton,
 from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
                           DispatcherHandlerStop, Filters, MessageHandler,
                           run_async)
-from telegram.error import BadRequest, RetryAfter, Unauthorized
+from telegram.error import BadRequest, RetryAfter, Unauthorized, TelegramError
+from MarinRobot import LOGGER
+from requests import get
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
 from MarinRobot.modules.helper_funcs.filters import CustomFilters
@@ -204,18 +206,24 @@ def bluemoon_callback(update: Update, context: CallbackContext, should_message=T
     chat = update.effective_chat
     user = update.effective_user
 
+    if not user:
+        return
+    bot = context.bot
+
     is_vanitas = sql.is_vanitas(chat_id)
     if is_vanitas:
         return
         x = None
     try:
         x = v.get_info(int(user.id))
-    except:
+    except AttributeError:
+        x = None
+    except (Unauthorized, ConnectionError) as er:
+        LOGGER.warning(f"An error occurred due to:\n{er}")
         x = None
 
-    if x:
-        update.effective_chat.ban_member(x.user)
-        update.effective_chat.unban_member(x.user)
+    if x.blacklisted:
+        bot.kick_chat_member(chat_id=chat.id, user_id=user.id)
         if should_message:
             alertvideo = "https://telegra.ph/file/fed47f651097bb2f5e6ca.mp4"
             kkn = InlineKeyboardMarkup(
@@ -258,4 +266,3 @@ dispatcher.add_handler(ABOUT_HANDLER)
 dispatcher.add_handler(BLUEMOON_HANDLER)
 dispatcher.add_handler(RM_VAINITAS_HANDLER)
 dispatcher.add_handler(BLUEMOON_HANDLERK, group=102)
-"""
