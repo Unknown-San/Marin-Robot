@@ -1,4 +1,4 @@
- from pyrogram import filters
+from pyrogram import filters
 
 from MarinRobot import pbot as app
 from MarinRobot.utils.errors import capture_err
