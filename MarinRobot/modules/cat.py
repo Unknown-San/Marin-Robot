@@ -19,7 +19,7 @@ async def take_ss(_, message):
         try:
             await app.send_photo(
                 message.chat.id,
-                photo=f"https://cataas.com/cat{url}",
+                photo=f"https://cataas.com/cat/{url}",
             )
         except TypeError:
             await m.edit("No Response Meow!.")
