@@ -6,7 +6,7 @@ from MarinRobot.utils.errors import capture_err
 
 
 
-@app.on_message(filters.command("cat"))
+@app.on_message(filters.command("wsfw"))
 @capture_err
 async def take_ss(_, message):
     try:
@@ -19,7 +19,7 @@ async def take_ss(_, message):
         try:
             await app.send_photo(
                 message.chat.id,
-                photo=f"https://cataas.com/cat/{url}",
+                photo=f"https://api.waifu.pics/sfw/{url}",
             )
         except TypeError:
             await m.edit("No Response Meow!.")
